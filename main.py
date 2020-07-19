@@ -1,4 +1,8 @@
 import csv
+#This function runs through the csv file twice, the first time to find the
+#largest amount of characters in each column. These numbers are used in order
+#to format when printing. The second run through prints out the lines in a 
+#properly formatted fashion using the max characters numbers found previously.
 def read_and_display(file):
     reader=csv.reader(file)
     first_row=next(reader)
@@ -22,6 +26,8 @@ def read_and_display(file):
                 newline+=200
         print(final_line)
     print("-"*200)
+#This function tries to open the file and run it through the read_and_display
+#function. If the path does not work, the function print out an error.
 def try_opening(filename):
     try:
         file=open(filename,"r")
@@ -29,6 +35,9 @@ def try_opening(filename):
         read_and_display(file)
     except:
         print("Invalid filename. Please try again.")
+#This function takes in the path from the user and decides how to handle it.
+#If the user enters EXIT, the program ends, if the user enters a path to a 
+#csv file, it passes that path through the functions try_opening.
 def main():
     print("Welcome!")
     descision=0
